@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package javaapplication7;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -40,7 +33,7 @@ public class NgramGenerator {
     public static void main(String[] args) {
         int count = 0;
         NgramGenerator ngramGenerator = new NgramGenerator();
-        File inputFile = new File("D:\\Study\\MS Courses\\Current Literature in Empirical Analysis\\Data\\AnnotatedTweetsProcessed.csv");
+        File inputFile = new File("filename.csv");
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
@@ -75,29 +68,6 @@ public class NgramGenerator {
         return result;
     }
 
-    private void tweetTagger() {
-        //String header = "Tweet,AT_Mention,Adjective,Determiner,Emoticon,Other,Nominal_Verbal,ProperNoun_Verbal,CommonNoun,ProNoun,Preposition,Adverb,Nominal_Possesive,VerbParticle,URL,Verb,Existential,Existential_Verbal,ProperNoun_Possesive,ProperNoun,Interjection,Hashtag,Numeral,Conjunction,Punctuation,Discourse_marker,women,pregnant,health,birth,mosquito,microcephaly,olympics,rio,fund,virus,Category";
-        String header = "Tweet,AT_Mention,Adjective,Determiner,Emoticon,Other,Nominal_Verbal,ProperNoun_Verbal,CommonNoun,ProNoun,Preposition,Adverb,Nominal_Possesive,VerbParticle,URL,Verb,Existential,Existential_Verbal,ProperNoun_Possesive,ProperNoun,Interjection,Hashtag,Numeral,Conjunction,Punctuation,Discourse_marker,Category";
-        File inputFile = new File("D:\\Study\\Knoesis\\Zika\\Data\\09-20-2016\\AnnotatedTweets.csv");
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
-            File outputFile = new File("D:\\Study\\MS Courses\\Current Literature in Empirical Analysis\\Data\\AnnotatedTweets.csv");
-            if (!outputFile.exists()) {
-                outputFile.createNewFile();
-            }
-            FileWriter fw = new FileWriter(outputFile.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(header);
-            String sCurrentLine;
-            while ((sCurrentLine = br.readLine()) != null) {
-
-            }
-            bw.close();
-            br.close();
-        } catch (IOException e) {
-
-        }
-    }
-
     private void ngramGenerator(String line) {
         List<String> words = new ArrayList();
         words.add("is");
@@ -116,7 +86,6 @@ public class NgramGenerator {
         try {
             sf.reset();
             while (sf.incrementToken()) {
-                //System.out.println(charTermAttribute.toString());
                 String key = charTermAttribute.toString();
                 int count = bigram.containsKey(key) ? bigram.get(key) : 0;
                 bigram.put(key, count + 1);

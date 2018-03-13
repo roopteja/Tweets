@@ -26,16 +26,11 @@ def preprocess_tweet(tweet):
     return tweet.strip()
 
 if __name__ == "__main__":
-    data = pandas.read_csv("D:\\Study\\Knoesis\\Zika\\Data\\09-20-2016\\AnnotatedTweets.csv", sep=",", quotechar = '"', usecols = [0,1], header=None)
-    data.columns = ["Tweets", "field"]
+    data = pandas.read_csv("input.csv", sep=",", quotechar = '"', usecols = [0,1], header=None)
+    data.columns = ["Tweets"]
     tweets = data['Tweets'].values
-    clean_tweets = open("D:\\Study\\MS Courses\\Current Literature in Empirical Analysis\\Data\\AnnotatedTweetsProcessed.csv",'w')
-    #clean_tweets.write("@relation zika\n")
-    #clean_tweets.write("@attribute TWEET_TEXT string\n")
-    #clean_tweets.write("@attribute Relevant {?}\n")
-    #clean_tweets.write("@data\n")
+    clean_tweets = open("output.csv",'w')
     for i in range(0,len(tweets)):
         tweet = preprocess_tweet(data.Tweets[i])
-        #clean_tweets.write('"'+str(tweet)+'",'+'{:.0f}'.format(data.field[i]))
-        clean_tweets.write('"'+str(tweet)+'",' + str(data.field[i]))
+        clean_tweets.write('"'+str(tweet)+'"')
         clean_tweets.write("\n")

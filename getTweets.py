@@ -1,4 +1,4 @@
-from tweepy.streaming import StreamListener
+#Get tweets from twitter api by keywords, location, twitter account numbers
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
@@ -15,7 +15,7 @@ class StdOutListener(StreamListener):
 
     def on_data(self, data):
         print (data)
-        with open('D:/Study/Knoesis/bioterrorism/bioterrorism.json','a') as tf:
+        with open('filename.json','a') as tf:
             tf.write(data)
         return True
 
@@ -31,5 +31,9 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, l)
 
-    #This line filter Twitter Streams to capture data by the keywords: 'python', 'javascript', 'ruby'
-    stream.filter(track=['tularemia', 'biosafety', 'amerithrax', 'biological weapon', 'bioterrorism', 'biological warfare', 'bioterrorist', 'botulism', 'biosecurity', 'plague', 'bacillus anthracis', 'anthrax letter', 'anthrax', 'smallpox'])
+    #This line filter Twitter Streams to capture data by the keywords like: 'python', 'java'
+    stream.filter(track=['keyword1', 'keyword2', 'keyword3'])
+	#This line filter Twitter Streams to capture data by latitude and longitude box
+	stream.filter(locations=[longitude of southwest corner,latitude of southwest corner,longitude of northeast corner,latitude of northeast corner])
+	#This line filter Twitter Streams to capture data by the twitter account numbers
+    stream.filter(follow=['account1','account2','account3'])
