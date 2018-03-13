@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     #This line filter Twitter Streams to capture data by the keywords like: 'python', 'java'
     stream.filter(track=['keyword1', 'keyword2', 'keyword3'])
-	#This line filter Twitter Streams to capture data by latitude and longitude box
-	stream.filter(locations=[longitude of southwest corner,latitude of southwest corner,longitude of northeast corner,latitude of northeast corner])
-	#This line filter Twitter Streams to capture data by the twitter account numbers
+    #This line filter Twitter Streams to capture data by latitude and longitude box
+    stream.filter(locations=[longitude of southwest corner,latitude of southwest corner,longitude of northeast corner,latitude of northeast corner])
+    #This line filter Twitter Streams to capture data by the twitter account numbers
     stream.filter(follow=['account1','account2','account3'])

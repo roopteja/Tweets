@@ -31,16 +31,12 @@ public class NgramGenerator {
     private HashMap<String, Integer> bigram = new HashMap();
 
     public static void main(String[] args) {
-        int count = 0;
         NgramGenerator ngramGenerator = new NgramGenerator();
         File inputFile = new File("filename.csv");
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
-                if(Float.parseFloat(sCurrentLine.substring(sCurrentLine.length()-1, sCurrentLine.length())) == 0) {
-                    ngramGenerator.ngramGenerator(sCurrentLine.substring(1, sCurrentLine.length() - 3));
-                    count++;
-                }
+                ngramGenerator.ngramGenerator(sCurrentLine);
             }
             br.close();
         } catch (IOException e) {
@@ -58,7 +54,6 @@ public class NgramGenerator {
             index++;*/
         }
         //System.out.println(sortedMap);
-        System.out.println(count);
     }
 
     private TreeMap<String, Integer> sortMapByValue(HashMap<String, Integer> map) {
