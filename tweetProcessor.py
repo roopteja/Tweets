@@ -26,7 +26,9 @@ def preprocess_tweet(tweet):
     return tweet.strip()
 
 if __name__ == "__main__":
-    data = pandas.read_csv("input.csv", sep=",", quotechar = '"', usecols = [0,1], header=None)
+    data = pandas.read_csv("input.csv", sep=",", quotechar = '"', usecols = [0], header=None)
+	# if the file contains any special characters use encoding
+	# data = pandas.read_csv("input.csv", sep=",", quotechar = '"', usecols = [0], header=None, encoding = "ISO-8859-1")
     data.columns = ["Tweets"]
     tweets = data['Tweets'].values
     clean_tweets = open("output.csv",'w')
